@@ -1,7 +1,10 @@
 @* @using DrOffice.Models; *@
 
-@* @{
+@{
   Layout = "_Layout";
-} *@
+}
 
 <h1>Welcome to the Doctor's Office!</h1>
+
+<p>@Html.ActionLink("View all Patients", "Index", "Patients")</p>
+<p>@Html.ActionLink("View all Doctors", "Index", "Doctors")</p>
