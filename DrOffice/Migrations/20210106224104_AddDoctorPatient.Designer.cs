@@ -2,14 +2,16 @@
 using DrOffice.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DrOffice.Migrations
 {
     [DbContext(typeof(DrOfficeContext))]
-    partial class DrOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20210106224104_AddDoctorPatient")]
+    partial class AddDoctorPatient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -7,11 +7,11 @@ namespace DrOffice.Models
   {
     public Patient()
     {
-      // this.Doctors = new HashSet<DoctorPatient>();
+      this.Doctors = new HashSet<DoctorPatient>();
     }
+    
     public int PatientId { get; set; }
     public string Name { get; set; }
-
-    // public ICollection<DoctorPatient> Doctors { get; }
+    public ICollection<DoctorPatient> Doctors { get; }
   }
 }

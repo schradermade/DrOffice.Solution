@@ -2,14 +2,16 @@
 using DrOffice.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DrOffice.Migrations
 {
     [DbContext(typeof(DrOfficeContext))]
-    partial class DrOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20210106215855_AddSpecialty")]
+    partial class AddSpecialty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,24 +32,6 @@ namespace DrOffice.Migrations
                     b.ToTable("Doctors");
                 });
 
-            modelBuilder.Entity("DrOffice.Models.DoctorPatient", b =>
-                {
-                    b.Property<int>("DoctorPatientId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("DoctorId");
-
-                    b.Property<int>("PatientId");
-
-                    b.HasKey("DoctorPatientId");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("DoctorPatient");
-                });
-
             modelBuilder.Entity("DrOffice.Models.Patient", b =>
                 {
                     b.Property<int>("PatientId")
@@ -58,19 +42,6 @@ namespace DrOffice.Migrations
                     b.HasKey("PatientId");
 
                     b.ToTable("Patients");
-                });
-
-            modelBuilder.Entity("DrOffice.Models.DoctorPatient", b =>
-                {
-                    b.HasOne("DrOffice.Models.Doctor", "Doctor")
-                        .WithMany("Patients")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DrOffice.Models.Patient", "Patient")
-                        .WithMany("Doctors")
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
