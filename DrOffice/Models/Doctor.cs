@@ -13,6 +13,6 @@ namespace DrOffice.Models
     public int DoctorId { get; set; }
     public string Name { get; set; }
 
-    //public ICollection<CourseStudent> Courses { get; }
+    //public ICollection<DoctorPatient> Doctors { get; }
   }
 }
