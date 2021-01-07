@@ -20,14 +20,6 @@ else
   @foreach(var join in Model.Doctors)
   {
     <li>@join.Doctor.Name</li>
-  }
-</ul>
-
-
-<ul>
-  @foreach(var join in Model.Doctors)
-  {
-    <li>@join.Doctor.Name</li>
     @using (Html.BeginForm("DeleteDoctor", "Patients"))
     {
       @Html.Hidden("joinId", @join.DoctorPatientId)
