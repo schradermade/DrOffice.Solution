@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DrOffice.Models.Doctor;
+
+<h2>Doctor Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if (@Model.Patients.Count == 0)
+{
+  <p>This doctor does not have any patients assigned</p>
+}
+else
+{
+  <h4>Patients this Doctor sees</h4>
+  <ul>
+    @foreach (var join in Model.Patients)
+    {
+      <li>@join.Patient.Name</li>
+      <li>@join.Patient.PatientId</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to Doctors", "Index")</p>
+<p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p>

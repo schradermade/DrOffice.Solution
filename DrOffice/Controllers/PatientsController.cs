@@ -56,6 +56,17 @@ namespace DrOffice.Controllers
       return View(thisPatient);
     }
 
-
+    [HttpPost]
+    public ActionResult Edit(Patient patient, int DoctorId)
+    {
+      if(DoctorId != 0)
+      {
+        _db.DoctorPatient.Add(new DoctorPatient() {DoctorId = DoctorId, PatientId = patient.PatientId});
+      }
+      
+      _db.Entry(patient).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
