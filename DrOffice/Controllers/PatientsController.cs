@@ -59,11 +59,11 @@ namespace DrOffice.Controllers
     [HttpPost]
     public ActionResult Edit(Patient patient, int DoctorId)
     {
-      if(DoctorId != 0)
+      if (DoctorId != 0)
       {
-        _db.DoctorPatient.Add(new DoctorPatient() {DoctorId = DoctorId, PatientId = patient.PatientId});
+        _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = DoctorId, PatientId = patient.PatientId });
       }
-      
+
       _db.Entry(patient).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -92,6 +92,25 @@ namespace DrOffice.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddDoctor(int id)
+    {
+      var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
+      return View(thisPatient);
+    }
+
+    [HttpPost]
+    public ActionResult AddDoctor(Patient patient, int DoctorId)
+    {
+      if (DoctorId != 0)
+      {
+        _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = DoctorId, PatientId = patient.PatientId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
 
   }
 }
